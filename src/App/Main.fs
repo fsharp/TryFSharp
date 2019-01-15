@@ -108,6 +108,7 @@ type Msg =
     | ChangeCssCode of string
     | UpdateQueryFailed of exn
     | RefreshIframe
+    | Share
 
 let private addLog log (model : Model) =
     { model with Logs =
@@ -389,6 +390,9 @@ let update msg (model : Model) =
 
     | ChangeCssCode newCode ->
         { model with CssCode = newCode }, Cmd.none
+
+    | Share ->
+        model, Cmd.ofFunc updateQuery (model.FSharpCode, model.HtmlCode, model.CssCode) ShareableUrlReady UpdateQueryFailed
 
     | ShareableUrlReady () ->
         model, Toast.message "Copy it from the address bar"
@@ -776,7 +780,15 @@ let private actionArea (state : State) dispatch =
                     [ Icon.faIcon [ Icon.Size IsSmall ]
                         [ Fa.icon Fa.I.Refresh ]
                       span [ ]
-                        [ str "Refresh" ] ] ] ]
+                        [ str "Refresh" ] ] ]
+              div [ Class "action-button" ]
+                [ Button.button [ Button.IsOutlined
+                                  Button.Disabled (state = Loading)
+                                  Button.OnClick (fun _ -> dispatch Share) ]
+                    [ Icon.faIcon [ Icon.Size IsSmall ]
+                        [ Fa.icon Fa.I.Share ]
+                      span [ ]
+                        [ str "Share" ] ] ] ]
 
     let collapsed =
         div [ Class "actions-area" ]
@@ -791,7 +803,13 @@ let private actionArea (state : State) dispatch =
                                   Button.Disabled (state = Loading)
                                   Button.OnClick (fun _ -> dispatch RefreshIframe) ]
                     [ Icon.faIcon [ Icon.Size IsLarge ]
-                        [ Fa.icon Fa.I.Refresh ] ] ] ]
+                        [ Fa.icon Fa.I.Refresh ] ] ]
+              div [ Class "action-button" ]
+                [ Button.button [ Button.IsOutlined
+                                  Button.Disabled (state = Loading)
+                                  Button.OnClick (fun _ -> dispatch Share) ]
+                    [ Icon.faIcon [ Icon.Size IsLarge ]
+                        [ Fa.icon Fa.I.Share ] ] ] ]
 
     (expanded, collapsed)
 

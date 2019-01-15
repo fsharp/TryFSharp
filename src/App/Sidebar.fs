@@ -148,9 +148,9 @@ let private collapseButton dispatch =
 let private sidebarContainer dispatch sections =
     div [ Class "sidebar is-expanded" ]
         [ div [ Class "brand" ]
-            [ img [ Src "img/fable-ionide.png" ]
+            [ img [ Src "img/fsharp.png" ]
               Heading.h4 [ ]
-                [ str "Fable REPL" ] ]
+                [ str "Try F# REPL" ] ]
           div [ Class "widgets-list" ]
             sections
           collapseButton dispatch ]
@@ -165,10 +165,8 @@ let private expandButton dispatch =
 
 let view (model: Model) (actionAreaExpanded, actionAreaCollapsed) dispatch =
     let widgets =
-        [ "General", Fa.I.Th, Widgets.General.view model.Options.GistToken model.General (GeneralMsg >> dispatch), None
-          "Samples", Fa.I.Book, Widgets.Samples.view model.Samples (SamplesMsg >> dispatch), Some "500px"
+        [ "Learn F#", Fa.I.Book, Widgets.Samples.view model.Samples (SamplesMsg >> dispatch), Some "500px"
           "Options", Fa.I.Cog, Widgets.Options.view model.Options (OptionsMsg >> dispatch), None
-          "Statistics", Fa.I.ClockO, Widgets.Stats.view model.Statistics, None
           "About", Fa.I.Info, Widgets.About.view, None ]
         |> List.map (renderWidgets model dispatch)
 
@@ -177,7 +175,7 @@ let view (model: Model) (actionAreaExpanded, actionAreaCollapsed) dispatch =
     else
         div [ Class "sidebar is-collapsed" ]
             [ div [ Class "brand" ]
-                [ img [ Src "img/fable-ionide.png" ] ]
+                [ img [ Src "img/fsharp.png" ] ]
               div [ Class "widgets-list" ]
                 (actionAreaCollapsed::widgets)
               expandButton dispatch ]

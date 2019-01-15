@@ -78,13 +78,13 @@ let private view (model: Model) dispatch =
             [ Hero.hero [ Hero.IsFullHeight ]
                 [ Hero.body [ ]
                     [ Container.container [ ]
-                        [ img [ Src "img/fable-ionide.png"
+                        [ img [ Src "img/fsharp.png"
                                 Style [ Display "block"
                                         Width "auto"
                                         Margin "auto" ] ]
                           br [ ]
                           Heading.h3 [ Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
-                            [ str "Fable REPL" ]
+                            [ str "Try F# REPL" ]
                           Heading.p [ Heading.IsSubtitle
                                       Heading.Is5
                                       Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
