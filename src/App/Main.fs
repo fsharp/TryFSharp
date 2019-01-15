@@ -753,13 +753,10 @@ let private viewCodeEditor (model: Model) =
 let private outputArea model dispatch =
     let isLiveViewShown = model.OutputTab = OutputTab.Live
     let content =
-        [ outputTabs model.OutputTab dispatch
+        [ //outputTabs model.OutputTab dispatch
           div [ Class "output-content"; Style [Height "100%"] ]
-            [ (if model.State = Loading then
-                    div [Class ("is-loading title has-text-centered " + (toggleDisplay isLiveViewShown))
-                         Style [Height "100%"; FontSize "1.2em"]] []
-                else viewIframe isLiveViewShown model.IFrameUrl)
-              viewCodeEditor model
+            [ viewIframe false model.IFrameUrl
+              //viewCodeEditor model
               ConsolePanel.view model.Logs ] ]
 
     div [ Class "output-container"

@@ -37,3 +37,4 @@ public/*.ttf
 public/*.woff
 
 *.DS_Store
+.ionide/

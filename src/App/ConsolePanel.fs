@@ -56,7 +56,7 @@ type ConsolePanel(props) =
     member __.ShowSeparator =
         div [ Class "scrollable-panel-body-row is-info"
               Style [ JustifyContent "center" ] ]
-            [ str "Iframe loaded" ]
+            [ str "REPL initialized" ]
 
     member __.OnContainerScroll( ev : React.WheelEvent) =
         let elt = ev.currentTarget :?> Browser.HTMLDivElement
@@ -75,6 +75,7 @@ type ConsolePanel(props) =
                 "is-hidden"
 
         div [ Class ("scrollable-panel-body " + bodyDisplay)
+              Style [ Height (!!"95vh" ) ]
               OnWheel this.OnContainerScroll ]
             [ for log in this.props.Logs do
                 match log with
@@ -91,9 +92,6 @@ type ConsolePanel(props) =
                             Browser.window?test <- el ) ]
                 [ ] ]
 
-    member this.ToggleDisplay _ev =
-        this.setState(fun s _ -> { s with IsExpanded = not s.IsExpanded })
-
     override this.render() =
         let headerIcon =
             if this.state.IsExpanded then
@@ -102,18 +100,9 @@ type ConsolePanel(props) =
                 Fa.I.AngleUp
 
         div [ Class "scrollable-panel is-console" ]
-            [ div [ Class "scrollable-panel-header"
-                    OnClick this.ToggleDisplay ]
-                [ div [ Class "scrollable-panel-header-icon" ]
-                    [ Icon.faIcon [ ]
-                        [ Fa.faLg
-                          Fa.icon headerIcon ] ]
-                  div [ Class "scrollable-panel-header-title" ]
-                    [ str "Console" ]
-                  div [ Class "scrollable-panel-header-icon" ]
-                    [ Icon.faIcon [ ]
-                        [ Fa.faLg
-                          Fa.icon headerIcon ] ] ]
+            [ div [ Class "scrollable-panel-header"]
+                [ div [ Class "scrollable-panel-header-title" ]
+                    [ str "Output" ] ]
               this.body ]
 
 let inline view logs =
