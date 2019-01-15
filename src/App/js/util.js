@@ -42,11 +42,11 @@ export function updateQuery(code, html, css) {
 export function loadState(key) {
     return Object.assign({
         // @ts-ignore
-        code: require("!raw-loader!./../../../public/samples/elmish/simple_input.fs"),
+        html: require("!raw-loader!./../../../public/samples/tour/index.html"),
         // @ts-ignore
-        html: require("!raw-loader!./../../../public/samples/elmish/simple_input.html"),
+        css: require("!raw-loader!./../../../public/samples/tour/index.css"),
         // @ts-ignore
-        css: require("!raw-loader!./../../../public/samples/elmish/simple_input.css")
+        code: require("!raw-loader!./../../../public/samples/tour/functions.fs")
       },
       JSON.parse(window.localStorage.getItem(key)) || {},
       parseQuery()
