@@ -628,28 +628,16 @@ let private registerCompileCommand dispatch (editor : Monaco.Editor.IStandaloneC
     editor.addCommand(monacoModule.KeyMod.CtrlCmd ||| int Monaco.KeyCode.KEY_S, triggerCompile, "") |> ignore
 
 let private editorArea model dispatch =
+    let titlePanel =
+        div [ Class "scrollable-panel" ]
+            [ div [ Class "scrollable-panel-header"]
+                [ div [ Class "scrollable-panel-header-title" ]
+                    [ str "Try F#" ] ] ]
+
     div [ Class "vertical-panel"
           Style [ Width (numberToPercent model.PanelSplitRatio)
                   Position "relative" ] ]
-        [ editorTabs model.CodeTab dispatch
-          // Html editor
-          ReactEditor.editor [ ReactEditor.Options (htmlEditorOptions
-                                                        model.Sidebar.Options.FontSize
-                                                        model.Sidebar.Options.FontFamily)
-                               ReactEditor.Value model.HtmlCode
-                               ReactEditor.IsHidden (model.CodeTab <> CodeTab.Html)
-                               ReactEditor.CustomClass (fontSizeClass model.Sidebar.Options.FontSize)
-                               ReactEditor.OnChange (ChangeHtmlCode >> dispatch)
-                               ReactEditor.EditorDidMount (registerCompileCommand dispatch) ]
-          // Css editor
-          ReactEditor.editor [ ReactEditor.Options (cssEditorOptions
-                                                        model.Sidebar.Options.FontSize
-                                                        model.Sidebar.Options.FontFamily)
-                               ReactEditor.Value model.CssCode
-                               ReactEditor.IsHidden (model.CodeTab <> CodeTab.Css)
-                               ReactEditor.CustomClass (fontSizeClass model.Sidebar.Options.FontSize)
-                               ReactEditor.OnChange (ChangeCssCode >> dispatch)
-                               ReactEditor.EditorDidMount (registerCompileCommand dispatch) ]
+        [ titlePanel
           // F# editor
           ReactEditor.editor [ ReactEditor.Options (fsharpEditorOptions
                                                         model.Sidebar.Options.FontSize
