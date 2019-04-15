@@ -56,7 +56,7 @@ type ConsolePanel(props) =
     member __.ShowSeparator =
         div [ Class "scrollable-panel-body-row is-info"
               Style [ JustifyContent "center" ] ]
-            [ str "REPL initialized" ]
+            [ str "Compiler Initialized Successfully" ]
 
     member __.OnContainerScroll( ev : React.WheelEvent) =
         let elt = ev.currentTarget :?> Browser.HTMLDivElement

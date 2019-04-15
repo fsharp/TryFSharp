@@ -642,12 +642,12 @@ let private editorArea model dispatch =
         div [ Class "scrollable-panel" ]
             [ div [ Class "scrollable-panel-header"]
                 [ div [ Class "scrollable-panel-header-title" ]
-                    [ str "Try F#" ] ] ]
+                    [ str "Enter F# Code" ] ] ]
 
     div [ Class "vertical-panel"
           Style [ Width (numberToPercent model.PanelSplitRatio)
                   Position "relative" ] ]
-        [ titlePanel
+        [ titlePanel        
           // F# editor
           ReactEditor.editor [ ReactEditor.Options (fsharpEditorOptions
                                                         model.Sidebar.Options.FontSize

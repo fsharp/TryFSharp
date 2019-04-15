@@ -150,7 +150,7 @@ let private sidebarContainer dispatch sections =
         [ div [ Class "brand" ]
             [ img [ Src "img/fsharp.png" ]
               Heading.h4 [ ]
-                [ str "Try F# REPL" ] ]
+                [ str "Try F#" ] ]
           div [ Class "widgets-list" ]
             sections
           collapseButton dispatch ]
