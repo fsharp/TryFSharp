@@ -15,7 +15,7 @@ module Literals =
 #if DEBUG
         "http://localhost:8080"
 #else
-        "https://fable.io/repl"
+        "https://try.fsharp.org"
 #endif
     let [<Literal>] SAMPLES_JSON_URL = HOST + "/samples/samples.json"
     let [<Literal>] REPL_LIB_MAP_JSON_URL = HOST + "/repl-lib-map.json"
