@@ -5,7 +5,7 @@ var CONFIG = {
     indexHtmlTemplate: "./src/index.html",
     fsharpEntry: "./src/App/App.fsproj",
     cssEntry: "./src/style/main.scss",
-    outputDir: "./deploy",
+    outputDir: "./docs",
     assetsDir: "./public",
     // It's important to use this port, check src/App/Shared.fs
     devServerPort: 8080,

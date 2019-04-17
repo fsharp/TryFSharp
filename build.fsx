@@ -139,7 +139,7 @@ Target "Clean" (fun _ ->
     !! "public/js"
     ++ LIBS_OUTPUT
     ++ METADATA_OUTPUT
-    ++ "deploy"
+    ++ "docs"
   |> CleanDirs
 )
 
@@ -186,7 +186,7 @@ Target "BuildApp" (fun _ ->
 )
 
 Target "PublishGithubPages" (fun _->
-    runYarn CWD "gh-pages -d deploy"
+    runYarn CWD "gh-pages -d docs"
 )
 
 Target "BuildLib" (fun _ ->
