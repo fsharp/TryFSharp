@@ -40,4 +40,4 @@ public/*.woff
 *.DS_Store
 .ionide/
 .paket/Paket.Restore.targets
-.paket/Paket.Restore.targets
+
