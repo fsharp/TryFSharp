@@ -84,7 +84,7 @@ let private view (model: Model) dispatch =
                                         Margin "auto" ] ]
                           br [ ]
                           Heading.h3 [ Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
-                            [ str "Try F# REPL" ]
+                            [ str "Try F#" ]
                           Heading.p [ Heading.IsSubtitle
                                       Heading.Is5
                                       Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered) ] ]
