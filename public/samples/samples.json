@@ -1,7 +1,7 @@
 [
     {
         "type": "category",
-        "label": "Learn",
+        "label": "F# Basics",
         "children": [
             {
                 "type": "menu-item",
