@@ -263,17 +263,18 @@ let view model dispatch =
             (FetchSamplesSuccess >> dispatch)
             (FetchSamplesError >> dispatch)
     let menus =
-        (Field.div [ Field.HasAddons ]
-            [ Control.div [ ]
-                [ Button.button [ Button.OnClick fetchSamplesMsg ]
-                    [ Icon.faIcon [ ]
-                        [ Fa.icon Fa.I.Refresh ] ] ]
-              Control.div [ Control.IsExpanded ]
-                [ Button.button [ Button.OnClick fetchSamplesMsg
-                                  Button.IsText
-                                  Button.IsFullWidth ]
-                    [ Text.span [ ]
-                        [ str "Refresh samples" ] ] ] ])::menus
+        let refresh = 
+            (Field.div [ Field.HasAddons ]
+                [ Control.div [ ]
+                    [ Button.button [ Button.OnClick fetchSamplesMsg ]
+                        [ Icon.faIcon [ Icon.Size IsSmall ]
+                            [ Fa.icon Fa.I.Refresh ] ] ]
+                  Control.div [ Control.IsExpanded ]
+                    [ Button.button [ Button.OnClick fetchSamplesMsg
+                                      Button.IsText ]
+                        [ Text.span [ ]
+                            [ str "Refresh samples" ] ] ] ])
+        menus @ [refresh]
 #endif
 
     Menu.menu [] menus

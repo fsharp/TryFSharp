@@ -772,24 +772,28 @@ let private actionArea (state : State) dispatch =
     let expanded =
         div [ Class "actions-area" ]
             [ div [ Class "action-button" ]
-                [ Button.button [ Button.IsOutlined
-                                  Button.Disabled (state = Loading)
-                                  Button.OnClick (fun _ -> dispatch (StartCompile None)) ]
-                    [ Icon.faIcon [ Icon.Size IsSmall ]
+                [ Button.button [ Button.IsOutlined    
+                                  Button.Props [ Tooltip.dataTooltip "Run the code" ]                                  
+                                  Button.CustomClass Tooltip.ClassName                                                                                                  
+                                  Button.Disabled (state = Loading)                                  
+                                  Button.OnClick (fun _ -> dispatch (StartCompile None)) ]                    
+                    [ Icon.faIcon [ Icon.Size IsSmall ]                      
                         compileIcon
                       span [ ]
-                        [ str "Compile" ] ] ]
+                        [ str "Run" ] ] ]
+            //   div [ Class "action-button" ]
+            //     [ Button.button [ Button.IsOutlined
+            //                       Button.Disabled (state = Loading)
+            //                       Button.OnClick (fun _ -> dispatch RefreshIframe) ]
+            //         [ Icon.faIcon [ Icon.Size IsSmall ]
+            //             [ Fa.icon Fa.I.Refresh ]
+            //           span [ ]
+            //             [ str "Refresh" ] ] ]
               div [ Class "action-button" ]
                 [ Button.button [ Button.IsOutlined
+                                  Button.Props [ Tooltip.dataTooltip "Create a sharable URL to share current code" ]
                                   Button.Disabled (state = Loading)
-                                  Button.OnClick (fun _ -> dispatch RefreshIframe) ]
-                    [ Icon.faIcon [ Icon.Size IsSmall ]
-                        [ Fa.icon Fa.I.Refresh ]
-                      span [ ]
-                        [ str "Refresh" ] ] ]
-              div [ Class "action-button" ]
-                [ Button.button [ Button.IsOutlined
-                                  Button.Disabled (state = Loading)
+                                  Button.CustomClass Tooltip.ClassName
                                   Button.OnClick (fun _ -> dispatch Share) ]
                     [ Icon.faIcon [ Icon.Size IsSmall ]
                         [ Fa.icon Fa.I.Share ]
@@ -800,18 +804,22 @@ let private actionArea (state : State) dispatch =
         div [ Class "actions-area" ]
             [ div [ Class "action-button" ]
                 [ Button.button [ Button.IsOutlined
+                                  Button.Props [ Tooltip.dataTooltip "Run the code" ]
+                                  Button.CustomClass Tooltip.ClassName
                                   Button.Disabled (state = Loading)
                                   Button.OnClick (fun _ -> dispatch (StartCompile None)) ]
                     [ Icon.faIcon [ Icon.Size IsLarge ]
                         compileIcon ] ]
+            //   div [ Class "action-button" ]
+            //     [ Button.button [ Button.IsOutlined
+            //                       Button.Disabled (state = Loading)
+            //                       Button.OnClick (fun _ -> dispatch RefreshIframe) ]
+            //         [ Icon.faIcon [ Icon.Size IsLarge ]
+            //             [ Fa.icon Fa.I.Refresh ] ] ]
               div [ Class "action-button" ]
                 [ Button.button [ Button.IsOutlined
-                                  Button.Disabled (state = Loading)
-                                  Button.OnClick (fun _ -> dispatch RefreshIframe) ]
-                    [ Icon.faIcon [ Icon.Size IsLarge ]
-                        [ Fa.icon Fa.I.Refresh ] ] ]
-              div [ Class "action-button" ]
-                [ Button.button [ Button.IsOutlined
+                                  Button.Props [ Tooltip.dataTooltip "Create a sharable URL to share current code" ]
+                                  Button.CustomClass Tooltip.ClassName
                                   Button.Disabled (state = Loading)
                                   Button.OnClick (fun _ -> dispatch Share) ]
                     [ Icon.faIcon [ Icon.Size IsLarge ]

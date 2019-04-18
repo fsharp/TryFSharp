@@ -27,7 +27,7 @@ type ExternalMsg =
 
 let init () =
     let samplesModel, samplesCmd = Widgets.Samples.init ()
-    { IsExpanded = false
+    { IsExpanded = true
       WidgetsState = Set.empty
       General = Widgets.General.init()
       Samples = samplesModel
@@ -166,8 +166,9 @@ let private expandButton dispatch =
 let view (model: Model) (actionAreaExpanded, actionAreaCollapsed) dispatch =
     let widgets =
         [ "Learn F#", Fa.I.Book, Widgets.Samples.view model.Samples (SamplesMsg >> dispatch), Some "500px"
-          "Options", Fa.I.Cog, Widgets.Options.view model.Options (OptionsMsg >> dispatch), None
-          "About", Fa.I.Info, Widgets.About.view, None ]
+          "About", Fa.I.Info, Widgets.About.view, None 
+          "Options", Fa.I.Cog, Widgets.Options.view model.Options (OptionsMsg >> dispatch), None ]
+          
         |> List.map (renderWidgets model dispatch)
 
     if model.IsExpanded then
