@@ -10,7 +10,7 @@ module Tour.UnitsOfMeasure
 /// To learn more, see: https://docs.microsoft.com/dotnet/fsharp/language-reference/units-of-measure
 
 /// First, open a collection of common unit names
-open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
+open FSharp.Data.UnitSystems.SI.UnitNames
 
 /// Define a unitized constant
 let sampleValue1 = 1600.0<meter>
