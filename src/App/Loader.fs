@@ -57,7 +57,7 @@ let urlUpdate (result: Option<Router.Page>) model =
                                Cmd.ofMsg (MainMsg Main.Reset) ]
 
 let init (result: Option<Router.Page>) =
-    if ReactDeviceDetect.exports.isMobile then
+    if ReactDeviceDetect.exports.isMobileOnly then
         urlUpdate result InvalidPlatform
     else
         urlUpdate result Initializing
