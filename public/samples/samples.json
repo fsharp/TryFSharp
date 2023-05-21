@@ -5,6 +5,11 @@
         "children": [
             {
                 "type": "menu-item",
+                "label": "Hello World",
+                "fsharpCode": "tour/helloworld.fs"
+            },
+            {
+                "type": "menu-item",
                 "label": "Functions",
                 "fsharpCode": "tour/functions.fs"
             },
