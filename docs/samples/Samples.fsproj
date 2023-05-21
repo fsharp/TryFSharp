@@ -7,6 +7,7 @@
     <Reference Include="../../src/Lib/bin/Debug/netstandard2.0/Fable.Repl.Lib.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tour/helloworld.fs" />
     <Compile Include="tour/functions.fs" />
     <Compile Include="tour/primitives.fs" />
     <Compile Include="tour/collections.fs" />
